@@ -23,8 +23,10 @@ pipeline {
         }
         stage('ExecuteSonarQubeReport') {
             steps {
+                withSonarQubeEnv(''){
                 sh 'npm run sonar'
                   }
+            }
         } 
         stage('Quality Gate') {
             steps {
