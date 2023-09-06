@@ -22,9 +22,7 @@ pipeline {
         }
         stage('ExecuteSonarQubeReport') {
             steps {
-                    withSonarQubeEnv('sonarqubescanner') {
-      				sh "/usr/bin/npm install verify sonar:sonar -Dsonar.projectKey=nodejspipeline-project -Dsonar.projectName='nodejspipeline project'"
-    				}      
+                sh 'npm run sonar'
                   }
         } 
         
