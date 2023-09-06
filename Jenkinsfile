@@ -36,7 +36,7 @@ pipeline {
                 }
             }
         }
-        }
+        
         stage('RunNodeJsApp') {
             steps {
                 sh 'npm start'
