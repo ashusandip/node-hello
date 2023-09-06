@@ -2,14 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('checkoutcode') {
+        stage('SCM') {
             steps {
-                git branch: 'master',url: 'https://github.com/ashusandip/nodejs-app-mss.git'
+                 git branch: 'master',url: 'https://github.com/ashusandip/nodejs-app-mss.git'
             }
         }
         stage('Build'){
             steps {
-                sh "npm config fix"
                 sh "npm install"  
             }
         }
@@ -23,16 +22,15 @@ pipeline {
         }
         stage('ExecuteSonarQubeReport') {
             steps {
-                    
-                        sh 'npm run sonar'
-                    
-                 }
+                    withSonarQubeEnv('sonarqubescanner') {
+      				sh "/usr/bin/npm clean verify sonar:sonar -Dsonar.projectKey=nodejspipeline-project -Dsonar.projectName='nodejspipeline-project'"
+    				}      
+                  }
         } 
         
         stage('RunNodeJsApp') {
             steps {
-                sh 'chmod 777 ./scripts/runApp.sh'
-                sh './scripts/runApp.sh'
+                sh 'npm start'
             } 
         }
     }
