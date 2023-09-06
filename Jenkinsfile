@@ -10,6 +10,7 @@ pipeline {
         stage('Build'){
             steps {
                 sh "npm install"  
+                sh "npm install sonarqube-scanner"
             }
         }
         stage('Install and Verify Apache') {
