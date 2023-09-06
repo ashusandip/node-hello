@@ -33,5 +33,15 @@ pipeline {
             } 
         }
     }
+     post {
+        success {
+            script {
+                def qg = waitForQualityGate()
+                if (qg.status != 'OK') {
+                    error("Quality Gate did not pass: ${qg.status}")
+                }
+            }
+        }
+    }
    
 }
