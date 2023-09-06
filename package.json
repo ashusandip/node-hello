@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
+    "sonar": "node sonar-project.js"
   },
   "repository": {
     "type": "git",
