@@ -26,22 +26,17 @@ pipeline {
                 sh 'npm run sonar'
                   }
         } 
-        
+        stage( 'Quality Gate '){
+            steps {
+                waitForQualityGate abortpipeline: true
+            }
+        }
         stage('RunNodeJsApp') {
             steps {
                 sh 'npm start'
             } 
         }
     }
-     post {
-        success {
-            script {
-                def qg = waitForQualityGate()
-                if (qg.status != 'OK') {
-                    error("Quality Gate did not pass: ${qg.status}")
-                }
-            }
-        }
-    }
+     
    
 }
