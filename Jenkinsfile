@@ -28,7 +28,7 @@ pipeline {
                   }
             }
         } 
-        stage('ExecuteSonarQubeReport') {
+        stage('Quality Gate') {
             steps {
                 script {
                     def scannerHome = tool name: 'sonarqube scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
