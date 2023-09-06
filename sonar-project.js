@@ -4,8 +4,8 @@ sonarqubeScanner({
   serverUrl: 'http://3.83.206.153:9000/',
        options : {
 	    'sonar.projectDescription': 'This is a Node JS application',
-	    'sonar.projectName': 'Node JS Application - Sample',
-	    'sonar.projectKey':'NodeJsMSS',
+	    'sonar.projectName': 'NodeJs project',
+	    'sonar.projectKey':'NodeJs',
 	    'sonar.login': 'admin',
             'sonar.password': 'SonarQube',
 	    'sonar.token': 'sqp_c65d9b8decfa27b3482887c1a04ae544ca25b367',
