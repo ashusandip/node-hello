@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                 git branch: 'master',url: 'https://github.com/ashusandip/nodejs-app-mss.git'
+                 git branch: 'master',url: 'https://github.com/ashusandip/node-hello.git'
             }
         }
         stage('Build'){
