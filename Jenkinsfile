@@ -28,9 +28,13 @@ pipeline {
                   }
             }
         } 
-        stage('Quality Gate') {
+        stage('RunNodeJsApp') {
             steps {
-                script {
+                sh 'npm start'
+            } 
+        }
+        post {
+           success {
                     def scannerHome = tool name: 'sonarqube scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     withSonarQubeEnv('sonarqubescanner') {
                     sh "${scannerHome}/bin/sonar-scanner"
@@ -39,16 +43,11 @@ pipeline {
                     error "Pipeline aborted due to quality gate failure: ${qg.status}"
                 }
             }
-        }
-    }
+         }
+      }
 }
-        
-        stage('RunNodeJsApp') {
-            steps {
-                sh 'npm start'
-            } 
-        }
-    }
+              
+              
      
    
 }
